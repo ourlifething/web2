@@ -1,0 +1,29 @@
+html{
+	background-color: #E8F5E9;
+}
+#container{
+	width: 550px;
+	margin: 100px auto;
+	background-color: #fff;
+	padding:80px;
+}
+h1{
+	text-align: center;
+	color:#A5D6A7;
+	font-size:150%;
+	
+}
+table{
+	width: 360px;
+	margin: 0 auto;
+}
+th{
+	background-color: #A5D6A7;
+	color:#fff;
+}
+td{
+	padding: 8px 20px;
+	background-color:#fff;
+	color: black;
+	text-align: center;
+}

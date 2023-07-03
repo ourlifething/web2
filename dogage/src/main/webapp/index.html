@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>犬年齢計算機</title>
+</head>
+<body>
+<p>犬の名前と年齢を入力してください</p>
+<form action="result.jsp" method="post"><!-- jspで受け取る場合 -->
+<p>名前:<input type="text" name="name"></p> <!-- <p>はブロック要素なので勝手に改行される -->
+<p>年齢:<input type="number" name="age" value="1"></p>
+<p>size:<input type="text" name="size"></p>
+<p>色:<input type="text" name="color"></p>
+<input type="submit" value="送信">
+<input type='hidden' name='date' value='2023/06/30'> <!-- 裏で実行user側に見えない -->
+</form>
+<a href="result.jsp?age=1&color=red&size=s">リンク</a>
+</body>
+</html>
