@@ -20,6 +20,7 @@ public class Main extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("ログ:Main:doGet start");
 		MutterDAO dao = new MutterDAO();
 		List<Mutter> list = dao.findAll();
 		request.setAttribute("mutterList", list);
@@ -38,7 +39,7 @@ public class Main extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//リクエストパラメーターの取得
-		request.setCharacterEncoding("UTF-8");
+		//request.setCharacterEncoding("UTF-8");
 		String text = request.getParameter("text");
 		
 		//入力値チェック

@@ -18,7 +18,7 @@ public class Delete extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
+		//request.setCharacterEncoding("UTF-8");
 		String s_id = request.getParameter("id");
 		String delete = request.getParameter("action");
 		if(s_id != null) {

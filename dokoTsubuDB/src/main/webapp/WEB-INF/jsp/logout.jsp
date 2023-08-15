@@ -10,5 +10,6 @@
 <h1>どこつぶログアウト</h1>
 <p>ログアウトしました</p>
 <a href="index.jsp">トップへ</a>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

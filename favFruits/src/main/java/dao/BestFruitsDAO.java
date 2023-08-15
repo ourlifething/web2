@@ -42,6 +42,7 @@ public class BestFruitsDAO {
 			e.printStackTrace();
 		}
 	}
+	
 	public List<FruitsJB> findAll(){
 		List<FruitsJB> fruitsList = new ArrayList<>();
 		
@@ -85,13 +86,14 @@ public class BestFruitsDAO {
 		}
 		
 	}
-	//一番人気のfルーツ
-	public List<FruitsJB> findBest(){
+	//一番人気のフルーツ
+	public List<FruitsJB> findBest(int selectMonth){
 		List<FruitsJB> bestFruits = new ArrayList<>();
 		
 		try {
 			this.connect();
-			ps = db.prepareStatement("SELECT * FROM favorites GROUP BY name ORDER BY count(name) DESC LIMIT 1");
+			ps = db.prepareStatement("SELECT * FROM favorites WHERE month=? GROUP BY name ORDER BY count(name) DESC LIMIT 1");
+			ps.setInt(1, selectMonth);
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
@@ -109,12 +111,14 @@ public class BestFruitsDAO {
 		}
 		return bestFruits;
 	}
-	public List<FruitsJB> findLimit(){
+	//ランキング上位10を表示
+	public List<FruitsJB> findLimit(int selectMonth){
 		List<FruitsJB> fruitsList = new ArrayList<>();
 		
 		try {
 			this.connect();
-			ps = db.prepareStatement("SELECT * FROM favorites GROUP BY name ORDER BY count(name) DESC LIMIT 10");
+			ps = db.prepareStatement("SELECT * FROM favorites WHERE month=? GROUP BY name ORDER BY count(name) DESC LIMIT 10");
+			ps.setInt(1, selectMonth);
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {

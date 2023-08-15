@@ -21,7 +21,7 @@ public class Login extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//リクエストパラメーターの取得
-		request.setCharacterEncoding("UTF-8");
+		//request.setCharacterEncoding("UTF-8");
 		String name = request.getParameter("name");
 		String pass = request.getParameter("pass");
 		
@@ -35,6 +35,7 @@ public class Login extends HttpServlet {
 		//ユーザー情報をセッションスコープに保存
 		HttpSession session = request.getSession();
 		session.setAttribute("loginUser", user);
+		System.out.println("islogin");
 		}
 		//ログイン結果画面にフォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/loginResult.jsp");

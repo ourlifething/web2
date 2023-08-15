@@ -11,18 +11,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.BestFruitsDAO;
+import model.DatetimeLogic;
 import model.FruitsJB;
 
 @WebServlet("/Result")
 public class Result extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public Result() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
@@ -44,9 +42,12 @@ public class Result extends HttpServlet {
 			
 			 bfdao.insertOne(fjb);
 		}
-			
-		List<FruitsJB> bestTen = bfdao.findLimit();
-		request.setAttribute("bestTen", bestTen);
+		DatetimeLogic dateTimeLogic = new DatetimeLogic();
+		String dateTime = dateTimeLogic.dateTime();
+		List<FruitsJB> bestTen = bfdao.findLimit(Integer.parseInt(dateTime));
+		HttpSession session = request.getSession();
+		session.setAttribute("bestTen", bestTen);
+		//request.setAttribute("bestTen", bestTen);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/result.jsp");
 		rd.forward(request, response);

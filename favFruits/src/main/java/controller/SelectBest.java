@@ -11,20 +11,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.BestFruitsDAO;
+import model.DatetimeLogic;
 import model.FruitsJB;
 @WebServlet("/SelectBest")
 public class SelectBest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public SelectBest() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BestFruitsDAO bestFruits = new BestFruitsDAO();
 		System.out.println("デバッグ:selectBest");
-		List<FruitsJB> bestOne = bestFruits.findBest();
+		DatetimeLogic dateTimelogic = new DatetimeLogic();
+		String dateTime =dateTimelogic.dateTime();
+		List<FruitsJB> bestOne = bestFruits.findBest(Integer.parseInt(dateTime));
 		String bestFruitname = bestOne.get(0).getName();
 		request.setAttribute("bestFruitname", bestFruitname);
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/recommend.jsp");

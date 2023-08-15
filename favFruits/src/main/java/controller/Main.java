@@ -13,10 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 public class Main extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public Main() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/signin.jsp");
 		rd.forward(request, response);

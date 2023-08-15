@@ -17,15 +17,10 @@ import model.LoginLogic;
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public Login() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/login.jsp");
 		rd.forward(request, response);
-		System.out.println("!!");
+		System.out.println("Login:doGet");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -33,13 +28,13 @@ public class Login extends HttpServlet {
 		String name = request.getParameter("name");
 		String pass = request.getParameter("password");
 		
-		System.out.println("デバッグLogin.java"+name);
-		System.out.println("デバッグLgin.java"+pass);
+		System.out.println("デバッグLogin.java name:"+name);
+		System.out.println("デバッグLgin.java pass:"+pass);
 		
 		LoginJB loginjb = new LoginJB(name, pass);
 		LoginLogic loginlogic = new LoginLogic();
 		boolean is_true = loginlogic.login(loginjb);
-		System.out.println("デバッグLogin.java"+is_true);
+		System.out.println("デバッグLogin.java:istrue:"+is_true);
 		if(is_true == true && name.length() != 0) {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginok",loginjb);

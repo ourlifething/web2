@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -33,11 +34,15 @@ public class Main extends HttpServlet {
 		    String page = (String)request.getParameter("page");
 		    
 		    System.out.println("ログ：Main ,page:"+page);
+		    
 		    int pageNo = page == null? 1:Integer.parseInt(page);//urlから叩かれ他時にpageを空白にされることがあるからその場合はnullで１が入る
+		    
 		    System.out.println("ログ：Main ,pageNo"+pageNo);
+
 			ejw = new EJWord(searchWord,mode,pageNo,LIMIT);
 			EJWordLogic logic = new EJWordLogic();
 			logic.execute(ejw);
+			System.out.println("ログ: Main: ejw.getPager():"+ejw.getPager());
 				
 		}else { 
 			ejw = new EJWord();

@@ -1,8 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.BestFruitsDAO;
+import model.DatetimeLogic;
 import model.FruitsJB;
 
 /**
@@ -20,10 +19,6 @@ import model.FruitsJB;
 @WebServlet("/Recommend")
 public class Recommend extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public Recommend() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
@@ -33,9 +28,8 @@ public class Recommend extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String recommendFruits = request.getParameter("recommend");
 		if(recommendFruits != null && recommendFruits.length() != 0) {
-			Date today = new Date();
-			SimpleDateFormat sdf = new SimpleDateFormat("M");
-			String dateTime = sdf.format(today);
+			DatetimeLogic dateTimelogic = new DatetimeLogic();
+			String dateTime =dateTimelogic.dateTime();
 			FruitsJB fruitsjb = new FruitsJB(recommendFruits,dateTime);
 			
 			System.out.println("デバッグRecommend.java:fruitsJB getNmae"+fruitsjb.getName());
