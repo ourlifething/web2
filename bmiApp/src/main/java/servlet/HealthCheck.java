@@ -21,6 +21,7 @@ public class HealthCheck extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String weight =request.getParameter("weight");
 		String height = request.getParameter("height");//入力を受け取る
